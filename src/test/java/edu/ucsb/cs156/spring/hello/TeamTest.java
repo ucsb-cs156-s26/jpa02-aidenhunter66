@@ -8,19 +8,33 @@ import org.junit.jupiter.api.Test;
 public class TeamTest {
 
     Team team;
+    Team otherteam;
 
     @BeforeEach
     public void setup() {
         team = new Team("test-team");    
+        otherteam = new Team("other-team")
     }
 
     @Test
     public void getName_returns_correct_name() {
        assert(team.getName().equals("test-team"));
     }
+    @Test
+    public void toString_returns_correct_string() {
+        assertEquals("Team(name=test-team, members=[])", team.toString());
+    }
 
-   
-    // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
-    // 100% mutation coverage (all mutants timed out or killed)
+    @Test
+    public void same_object(){
+        assertSame(team,team);
+        assertNotSame(otherteam,team);
+    }
+
+    // @Test
+    // public void different_object(){
+    //     assertEquals(team,otherteam);
+    // }
+
 
 }
