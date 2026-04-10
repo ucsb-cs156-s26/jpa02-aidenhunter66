@@ -9,11 +9,17 @@ public class TeamTest {
 
     Team team;
     Team otherteam;
+    Team team1;
+    Team team2;
+    Team team3;
 
     @BeforeEach
     public void setup() {
         team = new Team("test-team");    
         otherteam = new Team("other-team");
+        team1 = new Team("test-team");
+        team2 = new Team("team-two");
+        team3 = new Team("team-three");
     }
 
     @Test
@@ -38,10 +44,23 @@ public class TeamTest {
     }
 
     @Test
+    public void comparison_of_teams(){
+
+    assertEquals(true, team.equals(team1)); 
+
+    team1.addMember("Robert");
+    assertEquals(false, team.equals(team1)); 
+
+    assertEquals(false, team.equals(team2)); 
+
+    assertEquals(false, team.equals(team3)); 
+    }
+
+    @Test
     public void hash_test(){
         int result = team.hashCode();
         int expectedResult = -1226298695;
-       assertEquals(expectedResult,result);
+        assertEquals(expectedResult,result);
     }
 
 }
