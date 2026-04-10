@@ -13,7 +13,7 @@ public class TeamTest {
     @BeforeEach
     public void setup() {
         team = new Team("test-team");    
-        otherteam = new Team("other-team")
+        otherteam = new Team("other-team");
     }
 
     @Test
@@ -27,14 +27,21 @@ public class TeamTest {
 
     @Test
     public void same_object(){
-        assertSame(team,team);
-        assertNotSame(otherteam,team);
+        assertEquals(true,team.equals(team));
+        assertEquals(false,team.equals(otherteam));
     }
 
-    // @Test
-    // public void different_object(){
-    //     assertEquals(team,otherteam);
-    // }
+    @Test
+    public void instance_of_team(){
+        int dummy = 0;
+        assertEquals(false, team.equals(dummy));
+    }
 
+    @Test
+    public void hash_test(){
+        int result = team.hashCode();
+        int expectedResult = -1226298695;
+       assertEquals(expectedResult,result);
+    }
 
 }
